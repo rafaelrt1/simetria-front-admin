@@ -115,11 +115,21 @@ const Login = () => {
                 message={feedbackMessage}
                 hideTime={6000}
             ></FeedbackMessage>
+            <div className="image">
+                <img
+                    className="tinyLogo"
+                    src={require("../images/Simetria.png")}
+                    alt="Logo Simetria"
+                />
+                <h1 className="simetriaName">
+                    Administração - Agenda Simetria
+                </h1>
+            </div>
             <form onSubmit={handleSubmit(tryLogin)} className="form">
                 <Box
                     component="form"
                     sx={{
-                        marginTop: 8,
+                        marginTop: 4,
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
@@ -134,6 +144,7 @@ const Login = () => {
                         rules={{ maxLength: 60, required: true }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <TextField
+                                sx={{ minWidth: "270px" }}
                                 id="email"
                                 label="E-mail"
                                 variant="standard"
@@ -150,6 +161,7 @@ const Login = () => {
                         render={({ field: { onChange, onBlur, value } }) => (
                             <div className="password">
                                 <TextField
+                                    sx={{ minWidth: "270px" }}
                                     id="password"
                                     type={passwordVisible ? "text" : "password"}
                                     autoComplete="current-password"
@@ -180,7 +192,6 @@ const Login = () => {
                     <Button
                         type="submit"
                         variant="contained"
-                        // sx={{ mt: 3, mb: 2 }}
                         onClick={handleSubmit(tryLogin)}
                     >
                         Entrar
