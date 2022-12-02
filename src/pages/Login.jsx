@@ -125,80 +125,80 @@ const Login = () => {
                     Administração - Agenda Simetria
                 </h1>
             </div>
-            <form onSubmit={handleSubmit(tryLogin)} className="form">
-                <Box
-                    component="form"
-                    sx={{
-                        marginTop: 4,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "20px",
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <h3 className="login-label">Login</h3>
-                    <Controller
-                        control={control}
-                        rules={{ maxLength: 60, required: true }}
-                        render={({ field: { onChange, onBlur, value } }) => (
+            {/* <form onSubmit={handleSubmit(tryLogin)} className="form"> */}
+            <Box
+                component="form"
+                onSubmit={handleSubmit(tryLogin)}
+                sx={{
+                    marginTop: 4,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "20px",
+                    mb: 7,
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <h3 className="login-label">Login</h3>
+                <Controller
+                    control={control}
+                    rules={{ maxLength: 60, required: true }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <TextField
+                            sx={{ minWidth: "270px" }}
+                            id="email"
+                            label="E-mail"
+                            variant="standard"
+                            maxLength={60}
+                            onChange={onChange}
+                            autoComplete="username"
+                        />
+                    )}
+                    name="email"
+                ></Controller>
+                <Controller
+                    control={control}
+                    rules={{ maxLength: 60, required: true }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <div className="password">
                             <TextField
                                 sx={{ minWidth: "270px" }}
-                                id="email"
-                                label="E-mail"
+                                id="password"
+                                type={passwordVisible ? "text" : "password"}
+                                autoComplete="current-password"
+                                label="Senha"
                                 variant="standard"
                                 maxLength={60}
                                 onChange={onChange}
-                                autoComplete="username"
                             />
-                        )}
-                        name="email"
-                    ></Controller>
-                    <Controller
-                        control={control}
-                        rules={{ maxLength: 60, required: true }}
-                        render={({ field: { onChange, onBlur, value } }) => (
-                            <div className="password">
-                                <TextField
-                                    sx={{ minWidth: "270px" }}
-                                    id="password"
-                                    type={passwordVisible ? "text" : "password"}
-                                    autoComplete="current-password"
-                                    label="Senha"
-                                    variant="standard"
-                                    maxLength={60}
-                                    onChange={onChange}
-                                />
-                                <div className="password-input">
-                                    {passwordVisible ? (
-                                        <VisibilityIcon
-                                            onClick={() =>
-                                                setPasswordVisible(false)
-                                            }
-                                        ></VisibilityIcon>
-                                    ) : (
-                                        <VisibilityOffIcon
-                                            onClick={() =>
-                                                setPasswordVisible(true)
-                                            }
-                                        ></VisibilityOffIcon>
-                                    )}
-                                </div>
+                            <div className="password-input">
+                                {passwordVisible ? (
+                                    <VisibilityIcon
+                                        onClick={() =>
+                                            setPasswordVisible(false)
+                                        }
+                                    ></VisibilityIcon>
+                                ) : (
+                                    <VisibilityOffIcon
+                                        onClick={() => setPasswordVisible(true)}
+                                    ></VisibilityOffIcon>
+                                )}
                             </div>
-                        )}
-                        name="password"
-                    ></Controller>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        onClick={handleSubmit(tryLogin)}
-                    >
-                        Entrar
-                    </Button>
-                    {visibleLoader ? <CircularProgress /> : null}
-                </Box>
-            </form>
+                        </div>
+                    )}
+                    name="password"
+                ></Controller>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    onClick={handleSubmit(tryLogin)}
+                >
+                    Entrar
+                </Button>
+                {visibleLoader ? <CircularProgress /> : null}
+            </Box>
+            {/* </form> */}
         </Container>
     );
 };
