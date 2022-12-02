@@ -1,38 +1,239 @@
-.App {
+.background {
+    flex-grow: 1;
+    background-color: #F0D4D4;
+    align-items: center;
+    height: 100%;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-label {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.password-input {
+    position: relative;
+    top: -30px;
+    right: -20ch;
+    cursor: pointer;
+    width: fit-content;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.table-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    /* min-width: 250px; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* .table {
+    padding: ;
+    /* min-width: 250px; 
+} */
+
+.options-modal {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+.edition-area {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+    width: 100%;
+}
+
+.modal-checkbox{
+    justify-content: space-between;
+    display: flex;
+    align-items: flex-end;
+}
+
+.group-checkbox {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="submit"] {
+    background: #3f9345;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 40px;
+    padding: 6px 16px;
+    font-size: 16px;
+    font-weight: 100;
+    margin: 0;
+    border-radius: 4px;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+}
+
+.user-login {
+    display: flex;
+    flex-direction: column;
+}
+
+.user p {
+    margin: 0;
+}
+
+.logout {
+    cursor: pointer;
+    margin-left: 5px;
+    color: black;
+    font-size: 15px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.logout:hover {
+    opacity: 0.9;
+}
+
+.header-link {
+    text-decoration: none;
+}
+
+input[type="submit"]:hover {
+    background: #2c6a31;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    -webkit-appearance: none;
+}
+
+.fieldError {
+    color: #bf1650;
+    margin-top: 5px;
+    font-size: 14px;
+    max-width: 150px;
+}
+
+.fieldError::before {
+    display: inline;
+    content: "⚠ ";
+}
+
+.form-data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.form-div {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.checkbox-form {
+    display: flex;
+    height: 48px;
+    align-items: center;
+}
+
+.container-form-not-allowed {
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.not-allowed-label {
+    text-align: center;
+}
+
+.not-allowed-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.reserves {
+    display: flex;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 20px;
+}
+
+.mainButton {
+    border-radius: 2px;
+    border: 1px solid transparent;
+    box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
+    background-color: #3F3D3D;
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    align-items: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    color:#FFFFFF;
+    font-weight:bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.not-found-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+h1.error-404 {
+    font-size: 5rem;
+}
+
+@media (max-width: 768px) {
+    .not-allowed-options {
+        flex-direction: column;
+    }
+
+    .container-form {
+        width: 90%;
+        padding: 0 20px;
+    }
+
+    .reserves {
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .form-div {
+        min-width: none;
+        width: 100%;
+    }
 }
