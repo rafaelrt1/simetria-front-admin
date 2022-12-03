@@ -295,7 +295,7 @@ const Agenda = () => {
             service: filteredReserve.servico,
             client: filteredReserve.cliente,
         });
-        setModalTitle("Cancelar agendamento");
+        setModalTitle("Cancelar horário");
         setModalOpen(true);
     };
 
@@ -356,7 +356,7 @@ const Agenda = () => {
         setValue("clientNotRegistered", false);
         clearErrors();
         setAddNewClient(false);
-        setModalTitle("Editar agendamento");
+        setModalTitle("Editar horário");
         setModalOpen(true);
     };
 
@@ -416,7 +416,7 @@ const Agenda = () => {
 
     const sendReserve = async (formData) => {
         try {
-            const method = modalTitle === "Editar agendamento" ? "PUT" : "POST";
+            const method = modalTitle === "Editar horário" ? "PUT" : "POST";
             let body = {
                 date: formatDbDate(formData.dateEdition, true, false),
                 beginTime:
@@ -790,7 +790,7 @@ const Agenda = () => {
                                 setValue("paid", false);
                                 clearErrors();
                                 setAddNewClient(false);
-                                setModalTitle("Adicionar agendamento");
+                                setModalTitle("Adicionar horário");
                                 if (!clients.length) {
                                     getClients();
                                 }
@@ -814,13 +814,16 @@ const Agenda = () => {
                         >
                             <Box sx={modal}>
                                 <Typography
-                                    sx={{ marginBottom: "20px" }}
-                                    variant="h5"
-                                    component="h2"
+                                    sx={{
+                                        marginBottom: { md: "20px" },
+                                        textAlign: "center",
+                                    }}
+                                    variant="h6"
+                                    // component="h6"
                                 >
                                     {modalTitle}
                                 </Typography>
-                                {modalTitle === "Cancelar agendamento" && (
+                                {modalTitle === "Cancelar horário" && (
                                     <>
                                         <Typography
                                             sx={{ marginBottom: "20px" }}
@@ -866,7 +869,7 @@ const Agenda = () => {
                                         </div>
                                     </>
                                 )}
-                                {modalTitle !== "Cancelar agendamento" && (
+                                {modalTitle !== "Cancelar horário" && (
                                     <div className="edition-area">
                                         <form
                                             onSubmit={handleSubmit((data) => {
@@ -1380,7 +1383,7 @@ const Agenda = () => {
                                                     />
                                                 </div>
                                                 {modalTitle ===
-                                                    "Adicionar agendamento" && (
+                                                    "Adicionar horário" && (
                                                     <>
                                                         {!addNewClient && (
                                                             <div className="form-div">
@@ -1453,6 +1456,17 @@ const Agenda = () => {
                                                                                             client,
                                                                                             index
                                                                                         ) => {
+                                                                                            let text = `${client.nome}`;
+                                                                                            let aditionalText =
+                                                                                                client.emailGoogle
+                                                                                                    ? true
+                                                                                                    : false;
+                                                                                            if (
+                                                                                                aditionalText
+                                                                                            ) {
+                                                                                                text +=
+                                                                                                    " (Google)";
+                                                                                            }
                                                                                             return (
                                                                                                 <MenuItem
                                                                                                     key={
@@ -1462,7 +1476,7 @@ const Agenda = () => {
                                                                                                         client.id
                                                                                                     }
                                                                                                 >
-                                                                                                    {`${client.nome} (${client.email})`}
+                                                                                                    {`${text}`}
                                                                                                 </MenuItem>
                                                                                             );
                                                                                         }
@@ -1685,6 +1699,7 @@ const modal = {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
+    maxHeight: "75vh",
 };
 
 export default Agenda;
